@@ -20,18 +20,14 @@ async fn main() -> Result<(), Error> {
     println!("{}", "---".green().bold());
 
     let result = if let Ok(value) = res {
-        let mut value_string = value.to_string();
-        value_string.retain(|c| c != '"');
-        // let updated_string = value_string.replace('\n', "");
-        // let string = format!("{}", value_string);
+        let value_string = value.to_string();
+
         for line in value_string.split("\\n") {
             if !line.is_empty() {
                 println!("{}", line.green())
             }
         }
 
-        // println!("{}", value_string);
-        // print!("{string}");
         Ok(())
     } else {
         Err(Error {
@@ -41,6 +37,5 @@ async fn main() -> Result<(), Error> {
     };
 
     println!("{}", "---".green());
-
     result
 }
