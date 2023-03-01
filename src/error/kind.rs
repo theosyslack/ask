@@ -1,10 +1,8 @@
-
 #[derive(Debug)]
 pub enum ErrorKind {
     NoApiKey,
     InvalidApiKey,
     RequestFailed,
-    Unknown
 }
 
 impl std::fmt::Display for ErrorKind {
@@ -13,7 +11,6 @@ impl std::fmt::Display for ErrorKind {
             ErrorKind::InvalidApiKey => "InvalidApiKey",
             ErrorKind::RequestFailed => "RequestFailed",
             ErrorKind::NoApiKey => "NoApiKey",
-            ErrorKind::Unknown => "Unknown",
         };
 
         write!(f, "{}", string)

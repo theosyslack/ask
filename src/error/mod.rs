@@ -7,7 +7,7 @@ pub use kind::ErrorKind;
 #[derive(Debug)]
 pub struct Error {
     pub kind: ErrorKind,
-    pub message: Option<String>
+    pub message: Option<String>,
 }
 
 impl std::fmt::Display for Error {
@@ -24,14 +24,19 @@ impl From<VarError> for Error {
             VarError::NotPresent => ErrorKind::NoApiKey,
             VarError::NotUnicode(_) => ErrorKind::InvalidApiKey,
         };
-        
-        Error { kind, message: None }
+
+        Error {
+            kind,
+            message: None,
+        }
     }
 }
 
 impl From<reqwest::Error> for Error {
     fn from(value: reqwest::Error) -> Self {
-        todo!()
+        Error {
+            kind: ErrorKind::RequestFailed,
+            message: Some(value.to_string()),
+        }
     }
 }
-
