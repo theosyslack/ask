@@ -7,7 +7,7 @@ pub async fn query_chat_gpt(token: &str, query: &str) -> Result<Value, Error> {
     let api = reqwest::Client::new();
     let url = "https://api.openai.com/v1/chat/completions";
     let body = json!({
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-4",
         "messages": [{
             "role": "user",
             "content": query.to_string()
