@@ -9,7 +9,7 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let _ = dotenv();
-    let token = env::var("OPENAI_TOKEN")?;
+    let token = env::var("OPENAI_TOKEN").expect("No key provided. export OPENAI_TOKEN and try again.");
     let query_words: Vec<String> = env::args().skip(1).collect();
     let query = query_words.join(" ");
 

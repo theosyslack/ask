@@ -23,6 +23,8 @@ pub async fn query_chat_gpt(token: &str, query: &str) -> Result<Value, Error> {
 
     let json: Value = res.json().await?;
 
+    // println!("{}", serde_json::to_string_pretty(&json).unwrap());
+
     let message = &json["choices"][0]["message"]["content"];
 
     Ok(message.clone())
